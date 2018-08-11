@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# djelp assumes that you store your django projects in a certain way.
+# Visit https://github.com/daggepagge/django-projects-helper for more info.
+
+# Checking if there's no argument:
+if [[ $# -eq 0 ]] ; then
+    echo 'missing argument: projectname'
+
+else
+	# Moving in to the project folder:
+	cd "$HOME/Development/$1/"
+
+	# Activating the virtual environment in that directory with the name env_<PROJECTNAME>
+	source "env_$1/bin/activate"
+
+	# Moving in to the actual django project folder:
+	cd "$1"
+
+	# Opening the folder with the default text editor..
+	# (make sure you set something good as default the editor otherwise macOs will try and fail with TextEdit)
+	# Alternatively, you can switch out next line for this: open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl .
+    open -t .
+
+	# Opening a html file that will redirect to 127.0.0.1:8000 after a second so the server has time to boot.
+	open -a firefox $HOME/Development/djelp/redirect_to_localhost.html
+
+	# run django test server
+	python manage.py runserver
+fi
+
