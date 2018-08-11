@@ -22,8 +22,8 @@ djelp assumes you keep your django projects and virtual environments in a certai
 
 - ~/home
   - /Development
-    - /myproject        <-- parent folder with the same name as django folder
-      - /myproject          <-- normal django project folder
+    - /myproject        *<-- parent folder with the same name as django folder*
+      - /myproject          *<-- normal django project folder*
         - manage.py
         - /myproject 
-      - /env_myproject      <-- virtual environment lives here 
+      - /env_myproject      *<-- virtual environment lives here* 
