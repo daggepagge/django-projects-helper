@@ -17,6 +17,9 @@ else
 	# Moving in to the actual django project folder:
 	cd "$1"
 
+	# Opening the folder with finder
+	open .
+
 	# Opening the folder with the default text editor..
 	# (make sure you set something good as default the editor otherwise macOs will try and fail with TextEdit)
 	# Alternatively, you can switch out next line for this: open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl .

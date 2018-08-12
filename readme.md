@@ -2,7 +2,12 @@
 
 Bash script that helps opening and switching between django projects and their virtual environments. 
 
-With one single command djelp opens the project folder, activates the virtual environment, opens your code editor, starts the django server and opens it in your webrowser.
+With one single command djelp will:
+- activate the virtual environment for the project
+- launch your favourite code editor
+- open the project folder in finder
+- start up the django test server
+- open the project in your webrowser
 
 ### Installation
 
