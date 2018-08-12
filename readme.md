@@ -32,3 +32,7 @@ djelp assumes you keep your django projects and virtual environments in a certai
         - manage.py
         - /myproject 
       - /env_myproject      *<-- virtual environment lives here* 
+
+### Contributing
+
+I would appreciate any help making djelp better!
