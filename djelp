@@ -22,8 +22,8 @@ else
 	# Alternatively, you can switch out next line for this: open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl .
     open -t .
 
-	# Opening a html file that will redirect to 127.0.0.1:8000 after a second so the server has time to boot.
-	open -a firefox $HOME/Development/djelp/redirect_to_localhost.html
+	# Open 127.0.0.1 after 1 second so the server has time to boot.
+	launchbrowser 1 &
 
 	# run django test server
 	python manage.py runserver
