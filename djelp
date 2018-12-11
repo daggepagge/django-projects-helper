@@ -5,30 +5,45 @@
 
 # Checking if there's no argument:
 if [[ $# -eq 0 ]] ; then
-    echo 'missing argument: projectname'
-
+	echo 'missing argument: projectname'
 else
-	# Moving in to the project folder:
-	cd "$HOME/Development/$1/"
-
-	# Activating the virtual environment in that directory with the name env_<PROJECTNAME>
-	source "env_$1/bin/activate"
-
-	# Moving in to the actual django project folder:
-	cd "$1"
-
-	# Opening the folder with finder
-	open .
-
-	# Opening the folder with the default text editor..
-	# (make sure you set something good as default the editor otherwise macOs will try and fail with TextEdit)
-	# Alternatively, you can switch out next line for this: open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl .
-    open -t .
-
-	# Open 127.0.0.1 after 1 second so the server has time to boot.
-	launchbrowser 1 &
-
-	# run django test server
-	python manage.py runserver
+	if [[ $# -eq 2 ]] ; then
+		cd "$HOME/Development/$1/$1/"
+	else
+		if [ -e "$HOME/Development/$1/$1/manage.py" ]
+		then
+			echo "$1 seems to be a django project. > Opening it & running django dev-server."
+			# Moving in to the project folder:
+			cd "$HOME/Development/$1/"
+			# Activating the virtual environment in that directory with the name env_<PROJECTNAME>
+			source "env_$1/bin/activate"
+			# Moving in to the actual django project folder:
+			cd "$1"
+			# Opening the folder with finder
+			open .
+			# Opening the folder with the default text editor..
+			# (make sure you set something good as default the editor otherwise macOs will try and fail with TextEdit)
+			# Alternatively, you can switch out next line for this: open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl .
+			open -t .
+			# Open localhost after 1 second so the server has time to boot.
+			launchbrowser 2 &
+			# run django test server
+			python manage.py runserver localhost:8000
+		else
+			if [ -e "$HOME/Development/$1/$1/index.php" ]
+			then
+				echo "$1 seems to be a php project. > Opening it & running php server."
+				cd "$HOME/Development/$1/$1/"
+				open .
+				open -t .
+				launchbrowser &
+				php -S localhost:8000
+			else
+				echo "$1 doesn't seem to be made of django or php. > Opening it."
+				cd "$HOME/Development/$1/"
+				open .
+				open -t .
+			fi
+		fi
+	fi
 fi
-
